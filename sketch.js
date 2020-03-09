@@ -43,7 +43,7 @@ function draw_edges() {
         vertex2 = vertices[pair[1]];
         vertex(vertex1.x, vertex1.y);
         vertex(vertex2.x, vertex2.y);
-    }
+    } 
     endShape();
 }
 
