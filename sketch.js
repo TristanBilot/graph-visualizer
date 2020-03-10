@@ -22,7 +22,7 @@ function draw() {
 function build_vertices() {
     visited = {};
     edges.forEach((pair) => {
-        for (let i = 0; i < pair.length; i++) { // (v1, v2)
+        for (let i = 0; i < pair.length; i++) {
             v = pair[i];
             if (visited[v] == null) {
                 visited[v] = true;
