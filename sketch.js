@@ -1,9 +1,10 @@
 var vertices = {};  /*   2  =>  Vertex(2)        */
 var groups = [];    /*  [0] => [(0,1), (0,2)]    */
 
-const canvasMargin = 125;
+const canvasMargin = 80;
+const vertexSize = 50;
 const spacing = 50;
-const edges = [[10, 4], [10, 13], [1, 2], [2, 3], [3, 4], [4, 6], [14, 15], [16, 17]];
+const edges = [[54, 33],[23, 90],[24, 44],[22, 43],[18, 41],[19, 40], [10, 13], [1, 2], [2, 3], [3, 4], [4, 6], [14, 15], [16, 17]];
 
 function setup() {
     const width = calcCanvasWidth();
@@ -27,7 +28,7 @@ function draw() {
 }
 
 function calcCanvasWidth() {
-    return 2 * canvasMargin + (edges.length+1) * spacing;
+    return 2 * canvasMargin + edges.length * (spacing + vertexSize / 2);
 }
 
 function buildGroups() {
@@ -58,7 +59,7 @@ function buildVertices() {
     groups.forEach(arr => {
         widths.push(arr.length * (100 / 2));
     });
-    var midX = -canvasMargin * edges.length / 4;
+    var midX = -canvasMargin * edges.length / 2;
     var top = true;
 
     visited = {};
@@ -97,7 +98,7 @@ function drawEdges() {
 function drawVertices() {
     for (v in vertices) {
         object = vertices[v];
-        ellipse(object.x, object.y, 50, 50);
+        ellipse(object.x, object.y, vertexSize, vertexSize);
     }
 }
 
