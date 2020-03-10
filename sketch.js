@@ -1,14 +1,22 @@
 var vertices = {};  /*   2  =>  Vertex(2)        */
 var groups = [];    /*  [0] => [(0,1), (0,2)]    */
+var nbRows;
+var nbVertices;
 
-const canvasMargin = 80;
-const vertexSize = 50;
-const spacing = 50;
-const edges = [[54, 33],[23, 90],[24, 44],[22, 43],[18, 41],[19, 40], [10, 13], [1, 2], [2, 3], [3, 4], [4, 6], [14, 15], [16, 17]];
+const canvasMargin      = 80;
+const vertexSize        = 50;
+const edgeSize          = 150;
+const spacing           = 50;
+const nbVertexPerLine   = 10;
+
+const edges = [[54, 33],[23, 90],[24, 44],[22, 43],[18, 41],[19, 40], [10, 13], [1, 2], [2, 3], [3, 4], [4, 6], [14, 15], [16, 17], [56, 57],[58, 59],[60, 461], [62, 63], [63, 70]];
 
 function setup() {
+    nbVertices = nbDistinctVertices();
+    nbRows = Math.ceil(nbVertices / nbVertexPerLine + 1);
+
     const width = calcCanvasWidth();
-    const height = 500;
+    const height = calcCanvasHeight();
 
     createCanvas(width, height, WEBGL);
     strokeWeight(2);
@@ -28,7 +36,19 @@ function draw() {
 }
 
 function calcCanvasWidth() {
-    return 2 * canvasMargin + edges.length * (spacing + vertexSize / 2);
+    return 2 * canvasMargin + edges.length * (spacing + vertexSize / 2); // a modifier avec nbVertices
+}
+
+function calcCanvasHeight() {
+    return 2 * nbRows * (edgeSize + vertexSize);
+}
+
+function nbDistinctVertices() {
+    s = {};
+    for (let i = 0; i < edges.length; i++)
+        for (let j = 0; j < 2; j++)
+            s[edges[i][j]] = true;
+    return Object.keys(s).length;
 }
 
 function buildGroups() {
@@ -59,10 +79,12 @@ function buildVertices() {
     groups.forEach(arr => {
         widths.push(arr.length * (100 / 2));
     });
-    var midX = -canvasMargin * edges.length / 2;
+    var originX = -(canvasMargin * edges.length) / 2;
+    var originY = -(edgeSize + vertexSize * 2) * nbRows / 2;
     var top = true;
 
     visited = {};
+    nbPush = 0;
     for (let i = 0; i < nbGroups; i++) {                /* group i */
         for (let j = 0; j < groups[i].length; j++) {    /* element of group i */
             for (let k = 0; k < 2; k++) {               /* (x,y) tuple of element */
@@ -70,10 +92,15 @@ function buildVertices() {
                 if (visited[v] == null) {
                     visited[v] = true;
                     top = !top;
-                    x = floor(midX);
-                    y = floor(top ? (height / 4) : (-height / 4));
+                    x = floor(originX);
+                    y = floor(top ? (originY + edgeSize) : (originY - edgeSize));
                     vertices[v] = new Vertex(x, y, v);
-                    midX += spacing;
+                    originX += spacing;
+                    nbPush++;
+                }
+                if (nbPush % 10 == 0) {
+                    originX = -canvasMargin * edges.length / 2;
+                    originY += (2.5 * edgeSize);
                 }
             }
         }
