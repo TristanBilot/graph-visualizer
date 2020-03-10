@@ -8,7 +8,7 @@ function setup() {
     fill(220);
     stroke(220);
 
-    edges = [[1, 2], [2, 3], [3, 4], [0, 6]];
+    edges = [[10, 12], [1, 2], [2, 3], [3, 4], [0, 6]];
     
     build_groups();
     console.log(groups);
