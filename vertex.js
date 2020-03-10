@@ -16,8 +16,8 @@ class Vertex {
     }
 
     positionLabel(label) {
-        let posX = x + (width / 2) + (this.number >= 10 ? -3 : 3);
-        let posY = y + (height / 2) - 20;
+        let posX = this.x + (width / 2) + (this.number >= 10 ? -3 : 3);
+        let posY = this.y + (height / 2) - 20;
         this.label.position(posX, posY);
     }
 }
