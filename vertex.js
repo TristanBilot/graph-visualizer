@@ -23,13 +23,19 @@ class Vertex {
 }
 
 function offset(number) {
+    if (number == 0)
+        return 1;
+    var neg = false;
+    var nb = 0;
     const delta = -5;
-    switch (true) {
-    case number < 10:
-        return delta;
-    case number >= 10:
-        return (2 * delta);
-    case number >= 100:
-        return (3 * delta);
+
+    if (number < 0) {
+        number *= -1;
+        neg = true;
     }
+    while (number > 0) {
+        nb++;
+        number = Math.floor(number / 10);
+    }
+    return neg ? (nb + 1) * delta : nb * delta;
 }
