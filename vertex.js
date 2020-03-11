@@ -4,9 +4,12 @@ class Vertex {
         this.y = y;
         this.text = text;
         this.label = null;
+        this.size = 0;
 
+        this.calcEllipseSize();
         this.drawLabel();
         this.positionLabel();
+        
     }
 
     drawLabel() {
@@ -20,24 +23,21 @@ class Vertex {
         let posY = this.y + (height / 2) - 30;
         this.label.position(posX, posY);
     }
+
+    calcEllipseSize() {
+        const base = 40;
+        this.size = base + len(this.text) * 8;
+    }
+}
+
+function len(text) {
+    if (typeof text === 'string' || text instanceof String)
+        return text.length;
+    return text.toString().length;
 }
 
 function offset(text) {
     const delta = -5;
-    if (typeof text === 'string' || text instanceof String)
-        return text.length * delta;
-    if (text == 0)
-        return 1;
-    
-    var neg = false;
-    var nb = 0;
-    if (text < 0) {
-        text *= -1;
-        neg = true;
-    }
-    while (text > 0) {
-        nb++;
-        text = Math.floor(text / 10);
-    }
-    return neg ? (nb + 1) * delta : nb * delta;
+    const length = len(text);
+    return length * delta;
 }

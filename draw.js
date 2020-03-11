@@ -16,6 +16,6 @@ function drawEdges() {
 function drawVertices() {
     for (v in vertices) {
         object = vertices[v];
-        ellipse(object.x, object.y, vertexSize, vertexSize);
+        ellipse(object.x, object.y, object.size, object.size);
     }
 }
