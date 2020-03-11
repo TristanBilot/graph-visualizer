@@ -1,4 +1,6 @@
 function buildGroups() {
+    if (edges == null)
+        return;
     groupIndex = 0;
     edges.forEach((pair) => {
         found = false;

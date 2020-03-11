@@ -1,6 +1,10 @@
 var vertices = {};  /*   2  =>  Vertex(2)        */
 var groups = [];    /*  [0] => [(0,1), (0,2)]    */
 
+const strokeWidth       = 2;
+const fillCol           = 220;
+const backgroundCol     = 240;
+
 const canvasMargin      = 80;
 const vertexSize        = 40;
 const edgeSize          = 150;
@@ -8,7 +12,8 @@ const spacing           = 50;
 const nbVertexPerLine   = 8;
 const y_spacing         = 2.5 * edgeSize;
 
-const edges = [[54, 33],[233, 'tristan'],['A', 44],[22, 43],[18, 41],[19, 40], [10, 13], [1, 2], [2, 3], [3, 4], [4, 3], [14, 15], [16, 17]];
+// const edges = [[54, 33],[233, 'tristan'],['A', 44],[22, 43],[18, 41],[19, 40], [10, 13], [1, 2], [2, 3], [3, 4], [4, 3], [14, 15], [16, 17]];
+var edges = [];
 
 const nbVertices        = nbDistinctVertices();
 const maxVerticesRow    = nbVertices >= nbVertexPerLine ? nbVertexPerLine : nbVertices;
@@ -22,7 +27,7 @@ function setup() {
 }
 
 function draw() {
-    background(240);
+    background(backgroundCol);
     drawEdges();
     drawVertices();
 }
@@ -39,9 +44,9 @@ function init() {
 }
 
 function style() {
-    strokeWeight(2);
-    fill(220);
-    stroke(220);
+    strokeWeight(strokeWidth);
+    fill(fillCol);
+    stroke(fillCol);
 }
 
 function build() {
