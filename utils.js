@@ -1,5 +1,5 @@
 function calcCanvasWidth() {
-    return 2 * canvasMargin + ((maxVerticesRow - 1) * spacing); // a modifier avec nbVertices
+    return 2 * canvasMargin + ((maxVerticesRow - 1) * spacing);
 }
 
 function calcCanvasHeight() {

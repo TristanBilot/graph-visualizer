@@ -1,8 +1,8 @@
 class Vertex {
-    constructor(x, y, number) {
+    constructor(x, y, text) {
         this.x = x;
         this.y = y;
-        this.number = number;
+        this.text = text;
         this.label = null;
 
         this.drawLabel();
@@ -10,32 +10,34 @@ class Vertex {
     }
 
     drawLabel() {
-        let label = createP(this.number);
+        let label = createP(this.text);
         label.class('vertex');
         this.label = label;
     }
 
     positionLabel(label) {
-        let posX = this.x + (width / 2) + ((windowWidth - width) / 2) + offset(this.number);
+        let posX = this.x + (width / 2) + ((windowWidth - width) / 2) + offset(this.text);
         let posY = this.y + (height / 2) - 30;
         this.label.position(posX, posY);
     }
 }
 
-function offset(number) {
-    if (number == 0)
+function offset(text) {
+    const delta = -5;
+    if (typeof text === 'string' || text instanceof String)
+        return text.length * delta;
+    if (text == 0)
         return 1;
+    
     var neg = false;
     var nb = 0;
-    const delta = -5;
-
-    if (number < 0) {
-        number *= -1;
+    if (text < 0) {
+        text *= -1;
         neg = true;
     }
-    while (number > 0) {
+    while (text > 0) {
         nb++;
-        number = Math.floor(number / 10);
+        text = Math.floor(text / 10);
     }
     return neg ? (nb + 1) * delta : nb * delta;
 }

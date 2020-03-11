@@ -8,7 +8,7 @@ const spacing           = 50;
 const nbVertexPerLine   = 8;
 const y_spacing         = 2.5 * edgeSize;
 
-const edges = [[54, 33],[233, 90000],[24, 44],[22, 43],[18, 41],[19, 40], [10, 13], [1, 2], [2, 3], [3, 4], [4, 3], [14, 15], [16, 17]];
+const edges = [[54, 33],[233, 90000],['A', 44],[22, 43],[18, 41],[19, 40], [10, 13], [1, 2], [2, 3], [3, 4], [4, 3], [14, 15], [16, 17]];
 
 const nbVertices        = nbDistinctVertices();
 const maxVerticesRow    = nbVertices >= nbVertexPerLine ? nbVertexPerLine : nbVertices;
