@@ -5,10 +5,10 @@ const canvasMargin      = 80;
 const vertexSize        = 50;
 const edgeSize          = 150;
 const spacing           = 50;
-const nbVertexPerLine   = 8;
+const nbVertexPerLine   = 3;
 const y_spacing         = 2.5 * edgeSize;
 
-const edges = [[54, 33],[23, 90],[24, 44],[22, 43],[18, 41],[19, 40], [10, 13], [1, 2], [2, 3], [3, 4], [4, 6], [14, 15], [16, 17]];
+const edges = [[54, 33],[23, 90],[24, 44],[22, 43],[18, 41],[19, 40], [10, 13], [1, 2], [2, 3], [3, 4], [4, 3], [14, 15], [16, 17]];
 
 const nbVertices        = nbDistinctVertices();
 const maxVerticesRow    = nbVertices >= nbVertexPerLine ? nbVertexPerLine : nbVertices;
@@ -17,7 +17,6 @@ const nbRows            = Math.ceil(nbVertices / nbVertexPerLine);
 function setup() {
     const width = calcCanvasWidth();
     const height = calcCanvasHeight();
-    console.log(nbRows)
 
     var x = (windowWidth - width) / 2;
     var y = 0;
@@ -29,7 +28,6 @@ function setup() {
     stroke(220);
     
     buildGroups();
-    console.log(groups);
     buildVertices();
 }
 
@@ -79,11 +77,7 @@ function buildGroups() {
 }
 
 function buildVertices() {
-    let nbGroups = groups.length;
-    var widths = [];
-    groups.forEach(arr => {
-        widths.push(arr.length * (100 / 2));
-    });
+    const nbGroups = groups.length;
     const fixedOriginX = -(width / 2) + canvasMargin;
     var originX = fixedOriginX;
     var originY = -(height / 2) + edgeSize + vertexSize;
@@ -103,10 +97,11 @@ function buildVertices() {
                     vertices[v] = new Vertex(x, y, v);
                     originX += spacing;
                     nbPush++;
-                }
-                if (nbPush % nbVertexPerLine == 0) {
-                    originX = fixedOriginX;
-                    originY += y_spacing;
+
+                    if (nbPush % nbVertexPerLine == 0) {
+                        originX = fixedOriginX;
+                        originY += y_spacing;
+                    }
                 }
             }
         }
