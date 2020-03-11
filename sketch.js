@@ -1,7 +1,7 @@
 var vertices = {};  /*   2  =>  Vertex(2)        */
 var groups = [];    /*  [0] => [(0,1), (0,2)]    */
 
-const canvasMargin      = 100;
+const canvasMargin      = 80;
 const vertexSize        = 40;
 const edgeSize          = 150;
 const spacing           = 50;

@@ -24,7 +24,7 @@ function buildVertices() {
     const nbGroups = groups.length;
     const fixedOriginX = -(width / 2) + canvasMargin;
     var originX = fixedOriginX;
-    var originY = -(height / 2) + edgeSize + vertexSize;
+    var originY = -(height / 2) + edgeSize + vertexSize + canvasMargin;
     var top = true;
 
     visited = {};

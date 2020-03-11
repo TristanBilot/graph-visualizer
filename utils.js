@@ -3,7 +3,7 @@ function calcCanvasWidth() {
 }
 
 function calcCanvasHeight() {
-    return nbRows * (edgeSize + vertexSize) + (nbRows * y_spacing / 2);
+    return 2 * canvasMargin + nbRows * (edgeSize + vertexSize) + (nbRows * y_spacing / 2);
 }
 
 function nbDistinctVertices() {
