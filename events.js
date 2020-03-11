@@ -1,10 +1,20 @@
-
-$('#rules').keypress(() => {
+$('#rules').keyup(() => {
 	let input = $('#rules').val()
-	console.log(parse(input))
-	edges = parse(input)
-	resizeCanvas(calcCanvasWidth(), calcCanvasHeight());
-	style();
-    build();
+	let parsed = parse(input)
+	if (parsed == null)
+		return
+
+	clean()
+	edges = parsed
+	canvas.remove()
+	setup()
 	draw()
 });
+
+function clean() {
+	edges = [];
+	vertices = {};
+	groups = [];
+	updateConstants();
+	build();
+}

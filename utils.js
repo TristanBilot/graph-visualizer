@@ -7,6 +7,8 @@ function calcCanvasHeight() {
 }
 
 function nbDistinctVertices() {
+    if (edges == null)
+        return 0;
     s = {};
     for (let i = 0; i < edges.length; i++)
         for (let j = 0; j < 2; j++)
@@ -23,9 +25,9 @@ function sortGroups(descending = true) {
 }
 
 function twoPairsMatch(vertex, pair) {
-    return (pair[0] == vertex[0] || 
-            pair[0] == vertex[1] || 
-            pair[1] == vertex[0] || 
+    return (pair[0] == vertex[0] ||
+            pair[0] == vertex[1] ||
+            pair[1] == vertex[0] ||
             pair[1] == vertex[1]
         )
 }

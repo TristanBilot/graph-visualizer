@@ -9,7 +9,7 @@ class Vertex {
         this.calcEllipseSize();
         this.drawLabel();
         this.positionLabel();
-        
+
     }
 
     drawLabel() {
@@ -31,6 +31,7 @@ class Vertex {
 }
 
 function len(text) {
+    if (text == null) return 0;
     if (typeof text === 'string' || text instanceof String)
         return text.length;
     return text.toString().length;
