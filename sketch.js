@@ -14,7 +14,21 @@ const nbVertices        = nbDistinctVertices();
 const maxVerticesRow    = nbVertices >= nbVertexPerLine ? nbVertexPerLine : nbVertices;
 const nbRows            = Math.ceil(nbVertices / nbVertexPerLine);
 
+/* ---- P5 functions ---- */
 function setup() {
+    init();
+    style();
+    build();
+}
+
+function draw() {
+    background(240);
+    drawEdges();
+    drawVertices();
+}
+/* ----------- ----------- */
+
+function init() {
     const width = calcCanvasWidth();
     const height = calcCanvasHeight();
 
@@ -22,20 +36,16 @@ function setup() {
     var y = 0;
     var canvas = createCanvas(width, height, WEBGL);
     canvas.position(x, y);
+}
 
+function style() {
     strokeWeight(2);
     fill(220);
     stroke(220);
-    
+}
+
+function build() {
     buildGroups();
     sortGroups();
     buildVertices();
-    console.log(groups);
-}
-
-function draw() {
-    background(240);
-
-    drawEdges();
-    drawVertices();
 }
