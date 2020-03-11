@@ -1,24 +1,29 @@
 var vertices = {};  /*   2  =>  Vertex(2)        */
 var groups = [];    /*  [0] => [(0,1), (0,2)]    */
-var nbRows;
-var nbVertices;
 
 const canvasMargin      = 80;
 const vertexSize        = 50;
 const edgeSize          = 150;
 const spacing           = 50;
-const nbVertexPerLine   = 10;
+const nbVertexPerLine   = 8;
+const y_spacing         = 2.5 * edgeSize;
 
-const edges = [[54, 33],[23, 90],[24, 44],[22, 43],[18, 41],[19, 40], [10, 13], [1, 2], [2, 3], [3, 4], [4, 6], [14, 15], [16, 17], [56, 57],[58, 59],[60, 461], [62, 63], [63, 70]];
+const edges = [[54, 33],[23, 90],[24, 44],[22, 43],[18, 41],[19, 40], [10, 13], [1, 2], [2, 3], [3, 4], [4, 6], [14, 15], [16, 17]];
+
+const nbVertices        = nbDistinctVertices();
+const maxVerticesRow    = nbVertices >= nbVertexPerLine ? nbVertexPerLine : nbVertices;
+const nbRows            = Math.ceil(nbVertices / nbVertexPerLine);
 
 function setup() {
-    nbVertices = nbDistinctVertices();
-    nbRows = Math.ceil(nbVertices / nbVertexPerLine + 1);
-
     const width = calcCanvasWidth();
     const height = calcCanvasHeight();
+    console.log(nbRows)
 
-    createCanvas(width, height, WEBGL);
+    var x = (windowWidth - width) / 2;
+    var y = 0;
+    var canvas = createCanvas(width, height, WEBGL);
+    canvas.position(x, y);
+
     strokeWeight(2);
     fill(220);
     stroke(220);
@@ -36,11 +41,11 @@ function draw() {
 }
 
 function calcCanvasWidth() {
-    return 2 * canvasMargin + edges.length * (spacing + vertexSize / 2); // a modifier avec nbVertices
+    return 2 * canvasMargin + ((maxVerticesRow - 1) * spacing); // a modifier avec nbVertices
 }
 
 function calcCanvasHeight() {
-    return 2 * nbRows * (edgeSize + vertexSize);
+    return nbRows * (edgeSize + vertexSize) + (nbRows * y_spacing / 2);
 }
 
 function nbDistinctVertices() {
@@ -79,8 +84,9 @@ function buildVertices() {
     groups.forEach(arr => {
         widths.push(arr.length * (100 / 2));
     });
-    var originX = -(canvasMargin * edges.length) / 2;
-    var originY = -(edgeSize + vertexSize * 2) * nbRows / 2;
+    const fixedOriginX = -(width / 2) + canvasMargin;
+    var originX = fixedOriginX;
+    var originY = -(height / 2) + edgeSize + vertexSize;
     var top = true;
 
     visited = {};
@@ -98,9 +104,9 @@ function buildVertices() {
                     originX += spacing;
                     nbPush++;
                 }
-                if (nbPush % 10 == 0) {
-                    originX = -canvasMargin * edges.length / 2;
-                    originY += (2.5 * edgeSize);
+                if (nbPush % nbVertexPerLine == 0) {
+                    originX = fixedOriginX;
+                    originY += y_spacing;
                 }
             }
         }
