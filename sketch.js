@@ -5,7 +5,7 @@ const canvasMargin      = 80;
 const vertexSize        = 50;
 const edgeSize          = 150;
 const spacing           = 50;
-const nbVertexPerLine   = 3;
+const nbVertexPerLine   = 8;
 const y_spacing         = 2.5 * edgeSize;
 
 const edges = [[54, 33],[23, 90],[24, 44],[22, 43],[18, 41],[19, 40], [10, 13], [1, 2], [2, 3], [3, 4], [4, 3], [14, 15], [16, 17]];
@@ -28,7 +28,9 @@ function setup() {
     stroke(220);
     
     buildGroups();
+    sortGroups();
     buildVertices();
+    console.log(groups);
 }
 
 function draw() {
@@ -106,6 +108,14 @@ function buildVertices() {
             }
         }
     }
+}
+
+function sortGroups(descending = true) {
+    groups.sort((groupA, groupB) => {
+        if (descending)
+            return groupB.length - groupA.length;
+        return groupA.length - groupB.length;
+    });
 }
 
 function drawEdges() {
