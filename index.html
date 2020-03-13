@@ -13,11 +13,13 @@
   <script src="sketch.js"></script>
 
   <style>
-    .vertex {font-family: "Courier"; font-size: 18px;}
+    * {font-family: "Courier"; font-size: 18px;}
+    #error {color: red; display: none;}
   </style>
 </head>
 <body>
 	<textarea rows = "4" id = "rules" > </textarea>
+  <label id = "error">Syntax error</label>
 </body>
 	<script src="parser.js"></script>
 	<script src="events.js"></script>
