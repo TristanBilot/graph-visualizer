@@ -6,12 +6,12 @@ $('#rules').keyup(() => {
 	let input = $('#rules').val()
 	let parsed = parse(input)
 	if (parsed == null) {
-		document.getElementById("error").style.display = "block";
-		return
-	}
+		$("#error").css("display", "block");
+        return;
+	} else {
+        $("#error").css("display", "none");
+    }
 
-	document.getElementById("error").style.display = "none";
-	clean()
 	edges = parsed
 	canvas.remove()
 	setup()
@@ -19,6 +19,10 @@ $('#rules').keyup(() => {
 })
 
 function clean() {
+	for (v in vertices) {
+		o = vertices[v];
+		o.label.hide()
+	}
 	edges = [];
 	vertices = {};
 	groups = [];

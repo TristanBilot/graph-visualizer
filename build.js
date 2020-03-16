@@ -2,6 +2,7 @@ function buildGroups() {
     if (edges == null)
         return;
     groupIndex = 0;
+    groups = [];
     edges.forEach((pair) => {
         found = false;
         for (let i = 0; i < groups.length; i++) {
@@ -29,6 +30,7 @@ function buildVertices() {
     var originY = -(height / 2) + edgeSize + vertexSize + canvasMargin;
     var top = true;
 
+    vertices = {};
     visited = {};
     nbPush = 0;
     for (let i = 0; i < nbGroups; i++) {                /* group i */

@@ -6,12 +6,10 @@ function parse(input) {
 	// 	return throwError();
 	for (let i = 0; i < t.length; i++) {
 		let rule = t[i];
-		if (rule.trim() === "")
-		{
-			console.log("vide")
+		if (rule.trim() === "") {
+			clean();
 			continue;
 		}
-		console.log("non vide")
 		let s = rule.split("=>");
 		if (s.length != 2 || s[0] === "" || s[1] === "") {
 			if (s[0] != "" && s[0][s[0].length-1] != '=')

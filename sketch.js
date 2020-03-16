@@ -27,7 +27,7 @@ function setup() {
     build();
 }
 
-function draw() {
+function draw() {    
     background(backgroundCol);
     drawEdges();
     drawVertices();
