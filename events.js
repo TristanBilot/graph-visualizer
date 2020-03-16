@@ -5,14 +5,12 @@ $(document).ready(() => {
 $('#rules').keyup(() => {
 	let input = $('#rules').val()
 	let parsed = parse(input)
-	if (parsed == null) {
+	if (parsed == null)
 		$("#error").css("display", "block");
-        return;
-	} else {
+	else {
         $("#error").css("display", "none");
+        edges = parsed
     }
-
-	edges = parsed
 	canvas.remove()
 	setup()
 	draw()

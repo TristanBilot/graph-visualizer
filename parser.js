@@ -1,9 +1,6 @@
 function parse(input) {
 	var rules = [];
 	var t = input.split('\n');
-	console.log(t)
-	// if (isEmpty(t))
-	// 	return throwError();
 	for (let i = 0; i < t.length; i++) {
 		let rule = t[i];
 		if (rule.trim() === "") {
@@ -25,14 +22,7 @@ function parse(input) {
 	return rules;
 }
 
-// function isEmpty(input) {
-// 	for (let i = 0; i < input.length; i++) {
-// 		if (input[i].trim() != "")
-// 			return false;
-// 	}
-// 	return true;
-// }
-
 function throwError() {
+	console.log("error");
 	return null;
 }
