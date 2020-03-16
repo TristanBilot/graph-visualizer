@@ -31,3 +31,17 @@ function twoPairsMatch(vertex, pair) {
             pair[1] == vertex[1]
         )
 }
+
+function removeLabels() {
+    for (e in labels) {
+        arr = labels[e];
+        toDelete = false;
+        if (vertices[e] == null) {
+            toDelete = true;
+            for (let j = 0; j < arr.length; j++)
+                arr[j].remove();
+        }
+        if (toDelete)
+            delete labels[e];
+    }
+}

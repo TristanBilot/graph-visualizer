@@ -13,9 +13,13 @@ class Vertex {
     }
 
     drawLabel() {
+        removeLabels();
         let label = createP(this.text);
         label.class('vertex');
         this.label = label;
+        if (labels[this.text] == null)
+            labels[this.text] = [];
+        labels[this.text].push(label);
     }
 
     positionLabel(label) {

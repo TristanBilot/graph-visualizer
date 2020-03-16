@@ -1,5 +1,6 @@
 var vertices = {};  /*   2  =>  Vertex(2)        */
 var groups = [];    /*  [0] => [(0,1), (0,2)]    */
+var labels = {};    /*   2  =>  Label(2)         */
 
 const strokeWidth       = 2;
 const fillCol           = 220;
@@ -27,7 +28,7 @@ function setup() {
     build();
 }
 
-function draw() {    
+function draw() {
     background(backgroundCol);
     drawEdges();
     drawVertices();
