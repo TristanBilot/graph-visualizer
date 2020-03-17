@@ -23,15 +23,5 @@ function drawVertices() {
         let ell = ellipse(object.x, object.y, object.size, object.size);
         object.ellipse = ell;
         ellipses[object] = ell;
-        // fn(object);
     }
 }
-
-// function fn(object){
-//     let ell = object.ellipse;
-//     let radius = 40;
-//     var d = dist(mouseX, mouseY, object.x, object.y);
-//     console.log(mouseX, mouseY);
-//     if (d < radius)
-//         console.log(dist(mouseX, mouseY, object.label.x, object.label.y));
-// }

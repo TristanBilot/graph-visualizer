@@ -10,13 +10,12 @@ class Vertex {
         this.calcEllipseSize();
         this.drawLabel();
         this.positionLabel();
-
     }
 
     drawLabel() {
         removeLabels();
         let label = createP(this.text);
-        label.class('vertex');
+        label.class('vertex bold');
         this.label = label;
         if (labels[this.text] == null)
             labels[this.text] = [];

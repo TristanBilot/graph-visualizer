@@ -5,8 +5,11 @@
   <title>Graph visualizer</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style/ui.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>
 
   <script src="vertex.js"></script>
@@ -16,51 +19,54 @@
   <script src="algorithms.js"></script>
   <script src="sketch.js"></script>
 
-  <style>
-    * {font-family: "Courier"; font-size: 18px;}
-    h1 {font-size: 38px;}
-    p {font-size: 16px;}
-    .small {font-size: 14px;}
-    .basic_input {width: 35px;}
-    .basic_div {padding: 10px;}
-    .key {background-color: #212529; border-radius: .2rem; padding: .2rem .4rem; font-weight: 500; color: #fff}
-    .select_entry_point {width: 150px;}
-    #rules {border-radius: 5px; height: 150px; width: 97%; padding: 5px; border: 1px solid rgb(200,200,200); }
-    #rules_msg {width: 400px; background: rgb(240,240,240); padding: 15px; border-radius: 5px;}
-    #inbox_code {background: rgb(250,250,250); border-radius: 5px; padding: 20px; border: 1px solid rgb(200,200,200);}
-    #error {background: #fff3cd; border: 2px solid #ffeeba; color: #856404; padding: 5px; border-radius: .25rem; display: none; width: 100px; font-size: 13px;}
-  </style>
 </head>
 <body>
     <h1>Graph Visualizer</h1>
-    <div id = "rules_msg" class="alert alert-dark" role="alert">
-      <p>Enter your input rules here</p>
+    <div id = "rules_msg" class="rules_msg_div alert alert-dark" role="alert">
+      <p class="bold">Enter your input rules here</p>
       <hr class="my-4">
       <p class="small">Example:</p>
-      <div id="inbox_code">
+      <div class="inbox">
         A => B <br />
         B => C <br />
         42 => @
       </div>
       <br />
 
-    <div class="basic_div">
-        Edge length: <input id="input_edge" class="basic_input" type = "text" placeholder="150"></input><br />
-        Stroke weight: <input id="input_stroke" class="basic_input" type = "text" placeholder="2"></input><br />
-        Vertices per line: <input id="input_vertex" class="basic_input" type = "text" placeholder="12"></input><br />
-        Spacing: <input id="input_spacing" class="basic_input" type = "text" placeholder="50"></input><br /><br />
-    </div>
+      <hr class="my-4">
+      <span>Note: press <span class="key">Tab</span> to print an edge.</span>
       <textarea rows = "4" id = "rules" placeholder="Input rules"> </textarea><br /><br />
       <div id = "error">Syntax error</div>
 
-      <span>Note: press <span class="key">Tab</span> to print an edge.</span>
+      <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#settingsBtn" aria-expanded="false" aria-controls="settingsBtn">
+        Settings
+    </button>
+    <div class="collapse inbox settings_div" id="settingsBtn">
+        <div class="left">
+            <p class="settingsP">Edge length</p>
+            <p class="settingsP">Stroke weight</p>
+            <p class="settingsP">Vertices per line</p>
+            <p class="settingsP">Spacing</p>
+        </div>
+        <div class="right">
+             <input id="input_edge" class="basic_input" type = "text" placeholder="150"></input><br />
+             <input id="input_stroke" class="basic_input" type = "text" placeholder="2"></input><br />
+             <input id="input_vertex" class="basic_input" type = "text" placeholder="12"></input><br />
+             <input id="input_spacing" class="basic_input" type = "text" placeholder="50"></input>
+        </div>
+    </div>
+
   </div><br />
 
-    <select class="form-control select_entry_point">
-      <option value="" disabled selected>Entry point</option>
-    </select>
-    <input id="dfs_btn" type="button" value="Run DFS"></input>
-    <input id="bfs_btn" type="button" value="Run BFS"></input>
+    <div class="alert alert-dark rules_msg_div algorithm_div">
+        <p class="bold">Algorithms</p>
+        <hr class="my-4">
+        <select class="form-control select_entry_point left">
+          <option value="" disabled selected>Entry point</option>
+        </select>
+        <input class="btn btn-info" id="dfs_btn" type="button" value="Run DFS"></input>
+        <input class="btn btn-info" id="bfs_btn" type="button" value="Run BFS"></input>
+    </div>
 
 </body>
 	<script src="parser.js"></script>
