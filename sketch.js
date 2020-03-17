@@ -14,6 +14,8 @@ var edgeSize            = const_edgeSize;
 var spacing             = const_spacing;
 var nbVertexPerLine     = const_nbVertexPerLine;
 
+var animationDelay      = 1; 
+
 const fillCol           = 220;
 const backgroundCol     = 255;
 const canvasMargin      = 80;

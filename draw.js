@@ -16,21 +16,22 @@ function drawEdges() {
 function drawVertices() {
     for (v in vertices) {
         object = vertices[v];
-        if (ellToAnimate[v] == true)
+        if (ellToAnimate[v.toString()] == true)
             fill(255, 193, 7);
         else
             fill(240);
         let ell = ellipse(object.x, object.y, object.size, object.size);
         object.ellipse = ell;
         ellipses[object] = ell;
-        fn(object);
+        // fn(object);
     }
 }
 
-function fn(object){
-    let ell = object.ellipse;
-    let radius = 40;
-    var d = dist(mouseX, mouseY, object.x, object.y);
-    if (d < radius)
-        console.log("yeeeee");
-}
+// function fn(object){
+//     let ell = object.ellipse;
+//     let radius = 40;
+//     var d = dist(mouseX, mouseY, object.x, object.y);
+//     console.log(mouseX, mouseY);
+//     if (d < radius)
+//         console.log(dist(mouseX, mouseY, object.label.x, object.label.y));
+// }

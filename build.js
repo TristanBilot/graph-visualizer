@@ -31,8 +31,8 @@ function buildVertices() {
     var top = true;
 
     vertices = {};
-    visited = {};
-    nbPush = 0;
+    let visited = {};
+    let nbPush = 0;
     for (let i = 0; i < nbGroups; i++) {                /* group i */
         for (let j = 0; j < groups[i].length; j++) {    /* element of group i */
             for (let k = 0; k < 2; k++) {               /* (x,y) tuple of element */

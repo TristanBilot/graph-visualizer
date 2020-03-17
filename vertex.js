@@ -24,8 +24,8 @@ class Vertex {
     }
 
     positionLabel(label) {
-        let posX = this.x + (width / 2) + canvasPos.x + offset(this.text);
-        let posY = this.y + (height / 2) + canvasPos.y - 13;
+        let posX = width/2 + this.x + canvasPos.x + offset(this.text);
+        let posY = height/2 + this.y + canvasPos.y - 13;
         this.label.position(posX, posY);
     }
 

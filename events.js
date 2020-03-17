@@ -1,8 +1,10 @@
 $(document).ready(() => {
     $("#rules").html("")
     canvas.remove();
+    updateEntryPoints();
 });
 
+/* Handle Tab */
 $( "#rules" ).on( "keydown", function( event ) {
     if (event.keyCode == 9) {
         $('#rules').val($('#rules').val() + '=>');
@@ -10,6 +12,7 @@ $( "#rules" ).on( "keydown", function( event ) {
     }
 });
 
+/* Handle tap in rules textarea */
 $('#rules').keyup(() => {
 	let input = $('#rules').val();
 	let parsed = parse(input);
@@ -20,8 +23,10 @@ $('#rules').keyup(() => {
         edges = parsed;
     }
 	updateCanvas();
+    updateEntryPoints();
 })
 
+/* Handle setting values tap textareas */
 $(".basic_input").keyup(() => {
     edgeSize = $('#input_edge').val() == "" ? const_edgeSize : parseInt($('#input_edge').val());
     spacing = $('#input_spacing').val() == "" ? const_spacing : parseInt($('#input_spacing').val());
@@ -30,14 +35,23 @@ $(".basic_input").keyup(() => {
     updateCanvas();
 });
 
-/* ------ ALGORITHMS ------- */
-
+/* Handle click on DFS button */
 $('#dfs_btn').click(() => {
-    dfs(2);
+    let start = $(".select_entry_point").val();
+    if (start == null)
+        return;
+    dfs(start);
     animate();
-    console.log("DFS");
 });
 
+function updateEntryPoints() {
+    $(".select_entry_point").find(".ellipse").remove();
+    for (v in vertices) {
+        $(".select_entry_point").append(
+            `<option class="ellipse">${v}</option>`
+        );
+    }
+}
 
 function updateCanvas() {
     canvas.remove();
