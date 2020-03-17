@@ -1,6 +1,8 @@
 var vertices = {};  /*   2  =>  Vertex(2)        */
 var groups = [];    /*  [0] => [(0,1), (0,2)]    */
 var labels = {};    /*   2  =>  Label(2)         */
+var ellToAnimate = {};
+var ellipses = {};
 
 var const_edgeSize          = 150;
 var const_spacing           = 50;
@@ -38,6 +40,7 @@ function draw() {
     background(backgroundCol);
     drawEdges();
     drawVertices();
+    fill(fillCol);
 }
 /* ----------- ----------- */
 

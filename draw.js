@@ -9,13 +9,28 @@ function drawEdges() {
         vertex(vertex1.x, vertex1.y);
         vertex(vertex2.x, vertex2.y);
         }
-    } 
+    }
     endShape();
 }
 
 function drawVertices() {
     for (v in vertices) {
         object = vertices[v];
-        ellipse(object.x, object.y, object.size, object.size);
+        if (ellToAnimate[v] == true)
+            fill(255, 193, 7);
+        else
+            fill(240);
+        let ell = ellipse(object.x, object.y, object.size, object.size);
+        object.ellipse = ell;
+        ellipses[object] = ell;
+        fn(object);
     }
+}
+
+function fn(object){
+    let ell = object.ellipse;
+    let radius = 40;
+    var d = dist(mouseX, mouseY, object.x, object.y);
+    if (d < radius)
+        console.log("yeeeee");
 }

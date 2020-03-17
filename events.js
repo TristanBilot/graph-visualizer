@@ -30,6 +30,14 @@ $(".basic_input").keyup(() => {
     updateCanvas();
 });
 
+/* ------ ALGORITHMS ------- */
+
+$('#dfs_btn').click(() => {
+    dfs(2);
+    animate();
+    console.log("DFS");
+});
+
 
 function updateCanvas() {
     canvas.remove();

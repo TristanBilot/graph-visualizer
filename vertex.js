@@ -4,6 +4,7 @@ class Vertex {
         this.y = y;
         this.text = text;
         this.label = null;
+        this.ellipse = null;
         this.size = 0;
 
         this.calcEllipseSize();
@@ -24,7 +25,7 @@ class Vertex {
 
     positionLabel(label) {
         let posX = this.x + (width / 2) + canvasPos.x + offset(this.text);
-        let posY = this.y + (height / 2) + canvasPos.y - 27;
+        let posY = this.y + (height / 2) + canvasPos.y - 13;
         this.label.position(posX, posY);
     }
 
