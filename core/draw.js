@@ -17,9 +17,9 @@ function drawVertices() {
     for (v in vertices) {
         object = vertices[v];
         if (ellToAnimate[v.toString()] == true)
-            fill(255, 193, 7);
+            fill(40, 167, 69);
         else
-            fill(240);
+            fill(fillCol);
         let ell = ellipse(object.x, object.y, object.size, object.size);
         object.ellipse = ell;
         ellipses[object] = ell;

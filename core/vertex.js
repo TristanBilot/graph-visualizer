@@ -24,7 +24,7 @@ class Vertex {
 
     positionLabel(label) {
         let posX = width/2 + this.x + canvasPos.x + offset(this.text);
-        let posY = height/2 + this.y + canvasPos.y - 13;
+        let posY = height/2 + this.y + canvasPos.y - 14;
         this.label.position(posX, posY);
     }
 
@@ -42,7 +42,7 @@ function len(text) {
 }
 
 function offset(text) {
-    const delta = -5;
+    const delta = -6;
     const length = len(text);
     return length * delta;
 }

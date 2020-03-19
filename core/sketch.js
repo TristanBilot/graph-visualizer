@@ -16,7 +16,8 @@ var nbVertexPerLine     = const_nbVertexPerLine;
 
 var animationDelay      = 1;
 
-const fillCol           = 220;
+const fillCol           = 48;
+const strokeCol         = 48;
 const backgroundCol     = 255;
 const canvasMargin      = 80;
 const canvasPos         = {x:450, y:70};
@@ -32,6 +33,7 @@ var nbRows            = Math.ceil(nbVertices / nbVertexPerLine);
 
 /* ---- P5 functions ---- */
 function setup() {
+    pixelDensity(10.0);
     updateConstants();
     init();
     style();
@@ -39,10 +41,12 @@ function setup() {
 }
 
 function draw() {
+
     background(backgroundCol);
     drawEdges();
-    drawVertices();
     fill(fillCol);
+    drawVertices();
+
 }
 /* ----------- ----------- */
 
@@ -59,7 +63,8 @@ function init() {
 function style() {
     strokeWeight(strokeWidth);
     fill(fillCol);
-    stroke(fillCol);
+    stroke(strokeCol);
+    // noStroke()
 }
 
 function build() {
